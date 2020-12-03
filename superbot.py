@@ -28,7 +28,7 @@ import calendar
 import time
 
 load_dotenv()
-TOKEN = 'NzUxNTE3MjcyMjcwNzAwNjM1.X1KPAA.TR0QZc0jet1tKcc9LdIQtTwTkjs'
+TOKEN = 'NzUxNTE3MjcyMjcwNzAwNjM1.X1KPAA.zrRT6FhykVmrXvPUxhh3xftOBqI'
 
 bot = commands.Bot(command_prefix='!')
 
@@ -553,7 +553,7 @@ async def prof(ctx, institucion: str):
      await ctx.send(', '.join(ajustar))
 
 @bot.command(name='genpines', help='Generacion de pines en excel')
-async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institucion: str):
+async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institucion: str, ciudad: str):
     r = requests
 
     mysql = pymysql.connect(host='db-produccion-educarsie2-serveless.cluster-cxlnmcx1f2mz.us-east-2.rds.amazonaws.com',
@@ -680,12 +680,14 @@ async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institu
 
 
             print(cur1._last_executed)
-
+        nom_institucion = nom_institucion.replace('-',' ')
         sheet1.cell(row=32, column=1, value='Colegio:')
         sheet1.cell(row=32, column=2, value=nom_institucion)
+        sheet1.cell(row=1, column=4, value=ciudad)
         print(pin)
         sheet2.cell(row=32, column=1, value='Colegio:')
         sheet2.cell(row=32, column=2, value=nom_institucion)
+        sheet2.cell(row=1, column=4, value=ciudad)
         wbpin.save('maq_pin({})'.format(i)+ '.xlsx')
         wbconsec.save('maq_consec({})'.format(i)+ '.xlsx')
         response = 'Maquetas' + str(i)

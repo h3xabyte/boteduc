@@ -575,7 +575,7 @@ async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institu
             payload_pj = {
                 'institucion': institucion,
                 'grado': grado,
-                'creado_por': 'julian.ramirez',
+                'creado_por': 'bot.educar',
                 'a_o': '2020',
                 'maxima_activacion': '2021-12-31',
                 'maxima_usuario': '2021-12-31'
@@ -694,8 +694,8 @@ async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institu
         ts = calendar.timegm(time.gmtime())
         area=ctx.message.channel
         await ctx.send(response)
-        await ctx.send(file=discord.File(r'C:\Users\HP\Desktop\bot_educar\maq_pin({}).xlsx'.format(i)))
-        await ctx.send(file=discord.File(r'C:\Users\HP\Desktop\bot_educar\maq_consec({}).xlsx'.format(i)))
+        await ctx.send(file=discord.File(r'/home/bitnami/htdocs/superbot/boteduc/maq_pin({}).xlsx'.format(i)))
+        await ctx.send(file=discord.File(r'/home/bitnami/htdocs/superbot/boteduc/maq_consec({}).xlsx'.format(i)))
         shutil.move('maq_pin({}).xlsx'.format(i), 'maq_pin({})-{}-{}.xlsx'.format(i, institucion, ts))
         shutil.move('maq_consec({}).xlsx'.format(i), 'maq_consec({})-{}-{}.xlsx'.format(i, institucion, ts))
 

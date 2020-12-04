@@ -582,7 +582,7 @@ async def prof(ctx, institucion: str, cargas: str, numarchivos: int, nom_institu
             }
 
             Datas = json.dumps(payload_pj)
-            pedir = r.post('http://127.0.0.1:5000/api/pin', headers=HEADERS, data=Datas)
+            pedir = r.post('http://api.educar.com.co:4001/api/pin', headers=HEADERS, data=Datas)
             print(pedir.text)
             guardar = str(pedir.text)
             pines.append(guardar)
